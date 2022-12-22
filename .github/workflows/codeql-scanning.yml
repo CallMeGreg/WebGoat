@@ -38,11 +38,23 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - name: Autobuild compiled languages
+    - if: matrix.language == 'python' || matrix.language == 'javascript' || matrix.language == 'ruby'
+      name: Autobuild compiled languages
       uses: github/codeql-action/autobuild@v2
+
+    - if: matrix.language == 'java'
+      name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+          distribution: 'temurin'
+          java-version: 17
+          architecture: x64
+
+    - if: matrix.language == 'java'
+      name: Build Java
+      run: mvn --no-transfer-progress verify
     
     - name: Perform analysis
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{ matrix.language }}"
-
