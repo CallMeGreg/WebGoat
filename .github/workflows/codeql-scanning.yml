@@ -1,13 +1,13 @@
 name: "Code scanning with CodeQL"
 on:
   push:
-    branches: [*]
+    branches: [ ]
   pull_request:
     branches: [main]
 
 jobs:
   create-matrix:
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.languages }}
     steps:
