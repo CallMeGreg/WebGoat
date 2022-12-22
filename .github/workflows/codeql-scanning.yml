@@ -20,7 +20,7 @@ jobs:
 
   analyze:
     needs: create-matrix
-    if ${{ needs.create-matrix.outputs.matrix != '[]' }}
+    if: ${{ needs.create-matrix.outputs.matrix != '[]' }}
     name: "Analyze job"
     runs-on: ubuntu-latest
     
