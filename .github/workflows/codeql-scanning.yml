@@ -1,9 +1,9 @@
 name: "Code scanning with CodeQL"
 on:
   push:
-    branches: [ ]
+    branches: [ 'main' ]
   pull_request:
-    branches: [main]
+    branches: [ 'main' ]
 
 jobs:
   create-matrix:
