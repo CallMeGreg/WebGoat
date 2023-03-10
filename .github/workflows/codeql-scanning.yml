@@ -32,6 +32,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    
+    - name: Delombok
+      uses: lcartey/delombok-action@v1.1
 
     - name: Initialize CodeQL database
       uses: github/codeql-action/init@v2
